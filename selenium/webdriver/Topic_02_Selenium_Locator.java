@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.locators.RelativeLocator;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -19,6 +20,32 @@ public class Topic_02_Selenium_Locator {
         // Open web - go to login page
         driver.get("https://demo.nopcommerce.com/register");
     }
+    /** RULE to select locator
+     * 1. Unique
+     *      //input[@name='login[username]']
+     *      //input[@id='email']
+     *      //input[@title='Email Address']
+     *
+     * 2. Attribute: High priority if id/ class/ name
+     *      //input[@name='login[username]']
+     *      //input[@id='email']
+     *
+     * 3. Attribute non: If no have id/ class/ name -> Using any other attributes
+     *
+     * 4. Meaning: Value of the attribute must be meaningful - relevant to that element
+     *      //input[@title='Email Address']
+     *
+     * 5. Link: Not use attribute = href (Only using Text/ Title)
+     *
+     * NOTE:
+     *
+     * 1. Not replace "tagName" = "*"
+     *    Ex: //*[@id='login_username']
+     *
+     * 2. Not put attribute value into ""
+     *    Ex: //input[@id="login_username"]
+     * **/
+
 
     @Test
     public void TC_00_() {
@@ -234,6 +261,23 @@ public class Topic_02_Selenium_Locator {
         driver.findElement(By.xpath("//input"));
     }
 
+    @Test
+    public void TC_09_Relative_Locator(){
+        // 1. Can choose 1 in many positions (above, below, left, right,..) -> find
+        // 2. Using to check GUI
+        driver.get("https://demo.nopcommerce.com/login");
+        By passwordTextBy = By.id("Password");
+        By rememberCheckboxBy = By.cssSelector("input#RememberMe");
+        By forgetLinkBy = By.linkText("Forgot password?");
+        By loginBtnBy = By.cssSelector("button.login-button");
+
+        driver.findElement(RelativeLocator.with(By.tagName("label"))
+                .below(passwordTextBy)
+//                .above(loginBtnBy)
+//                .toRightOf(rememberCheckboxBy)
+//                .toLeftOf(forgetLinkBy)
+        );
+    }
 
     @AfterClass
     public void cleanBrowser() {
