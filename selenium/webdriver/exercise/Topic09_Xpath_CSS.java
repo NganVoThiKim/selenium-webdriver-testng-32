@@ -121,50 +121,63 @@ public class Topic09_Xpath_CSS {
         driver.findElement(By.id("txtCEmail")).sendKeys("a123@gmail.com");
         driver.findElement(By.id("txtPassword")).sendKeys("aA1234");
         driver.findElement(By.id("txtCPassword")).sendKeys("aA1234");
+
+        // < 10 characters
         driver.findElement(By.id("txtPhone")).sendKeys("086603303");
-
-        //...
         driver.findElement(By.xpath("//button[@type='submit']")).click();
 
-        // Assert
         Assert.assertEquals(driver.findElement(By.id("txtPhone-error")).getText(),"Số điện thoại phải từ 10-11 số.");
-    }
 
-    @Test
-    public void Register_07_Phone_More_Than_11_Characters() {
-        driver.get("https://alada.vn/tai-khoan/dang-ky.html");
-
-        driver.findElement(By.id("txtFirstname")).sendKeys("John");
-        driver.findElement(By.id("txtEmail")).sendKeys("a123@gmail.com");
-        driver.findElement(By.id("txtCEmail")).sendKeys("a123@gmail.com");
-        driver.findElement(By.id("txtPassword")).sendKeys("aA1234");
-        driver.findElement(By.id("txtCPassword")).sendKeys("aA1234");
+        // > 11 characters
+        driver.findElement(By.id("txtPhone")).clear();
         driver.findElement(By.id("txtPhone")).sendKeys("086603303453");
-
-        //...
         driver.findElement(By.xpath("//button[@type='submit']")).click();
 
-        // Assert
         Assert.assertEquals(driver.findElement(By.id("txtPhone-error")).getText(), "Số điện thoại phải từ 10-11 số.");
-    }
 
-    @Test
-    public void Register_08_Invalid_Phone(){
-        driver.get("https://alada.vn/tai-khoan/dang-ky.html");
-
-        driver.findElement(By.id("txtFirstname")).sendKeys("John");
-        driver.findElement(By.id("txtEmail")).sendKeys("a123@gmail.com");
-        driver.findElement(By.id("txtCEmail")).sendKeys("a123@gmail.com");
-        driver.findElement(By.id("txtPassword")).sendKeys("aA1234");
-        driver.findElement(By.id("txtCPassword")).sendKeys("aA1234");
+        // Start with #09, 08,...
+        driver.findElement(By.id("txtPhone")).clear();
         driver.findElement(By.id("txtPhone")).sendKeys("1199788993");
-
-        //...
         driver.findElement(By.xpath("//button[@type='submit']")).click();
 
-        // Assert
         Assert.assertEquals(driver.findElement(By.id("txtPhone-error")).getText(),"Số điện thoại bắt đầu bằng: 09 - 03 - 012 - 016 - 018 - 019 - 088 - 03 - 05 - 07 - 08");
     }
+
+//    @Test
+//    public void Register_07_Phone_More_Than_11_Characters() {
+//        driver.get("https://alada.vn/tai-khoan/dang-ky.html");
+//
+//        driver.findElement(By.id("txtFirstname")).sendKeys("John");
+//        driver.findElement(By.id("txtEmail")).sendKeys("a123@gmail.com");
+//        driver.findElement(By.id("txtCEmail")).sendKeys("a123@gmail.com");
+//        driver.findElement(By.id("txtPassword")).sendKeys("aA1234");
+//        driver.findElement(By.id("txtCPassword")).sendKeys("aA1234");
+//        driver.findElement(By.id("txtPhone")).sendKeys("086603303453");
+//
+//        //...
+//        driver.findElement(By.xpath("//button[@type='submit']")).click();
+//
+//        // Assert
+//        Assert.assertEquals(driver.findElement(By.id("txtPhone-error")).getText(), "Số điện thoại phải từ 10-11 số.");
+//    }
+//
+//    @Test
+//    public void Register_08_Invalid_Phone(){
+//        driver.get("https://alada.vn/tai-khoan/dang-ky.html");
+//
+//        driver.findElement(By.id("txtFirstname")).sendKeys("John");
+//        driver.findElement(By.id("txtEmail")).sendKeys("a123@gmail.com");
+//        driver.findElement(By.id("txtCEmail")).sendKeys("a123@gmail.com");
+//        driver.findElement(By.id("txtPassword")).sendKeys("aA1234");
+//        driver.findElement(By.id("txtCPassword")).sendKeys("aA1234");
+//        driver.findElement(By.id("txtPhone")).sendKeys("1199788993");
+//
+//        //...
+//        driver.findElement(By.xpath("//button[@type='submit']")).click();
+//
+//        // Assert
+//        Assert.assertEquals(driver.findElement(By.id("txtPhone-error")).getText(),"Số điện thoại bắt đầu bằng: 09 - 03 - 012 - 016 - 018 - 019 - 088 - 03 - 05 - 07 - 08");
+//    }
 
     // 3 - Clean: Delete test data/ browser
     @AfterClass
