@@ -95,6 +95,62 @@ public class Topic_03_Xpath_Css {
     public void TC_08_Xpath_Not() {
     }
 
+    @Test
+    public void TC_09_Xpath_Inside_Parent() {
+        driver.get("https://automationfc.github.io/basic-form/");
+
+        String text2 = driver.findElement(By.xpath("//div[@class='container']/h5[2]")).getText();
+        System.out.println(text2);
+
+        String text3 = driver.findElement(By.xpath("//div[@class='container']/h5[3]")).getText();
+        System.out.println(text3);
+    }
+
+    @Test
+    public void TC_10_Xpath_Position() {
+        driver.get("https://automationfc.github.io/basic-form/");
+
+        String text1 = driver.findElement(By.xpath("//div[@class='container']/h5[position()=1]")).getText();
+        System.out.println(text1);
+
+    }
+
+    @Test
+    public void TC_11_Xpath_Last() {
+        driver.get("https://automationfc.github.io/basic-form/");
+
+        String text13 = driver.findElement(By.xpath("//div[@class='container']/h5[last()-1]")).getText();
+        System.out.println(text13);
+
+        String text14 = driver.findElement(By.xpath("//div[@class='container']/h5[last()]")).getText();
+        System.out.println(text14);
+
+    }
+
+    @Test
+    public void TC_11_Xpath_Outside_Parent_Axes() {
+        driver.get("https://live.techpanda.org/index.php/mobile.html");
+
+        // Ancestor
+        driver.findElement(By.xpath("//a[text()='Samsung Galaxy']/ancestor::li"));
+
+        // Parent
+        driver.findElement(By.xpath("//a[text()='Samsung Galaxy']/parent::h2/parent::div/parent::li/descendant::button"));
+
+        // Preceding-sibling
+        driver.findElement(By.xpath("//button[@title='Add to Cart']/parent::div/preceding-sibling::h2/a[text()='Samsung Galaxy']"));
+
+        // Following-sibling
+        driver.findElement(By.xpath("//a[text()='Samsung Galaxy']/parent::h2/following-sibling::div[@class='actions']/button"));
+
+        // Child
+        driver.findElement(By.xpath("//a[text()='Samsung Galaxy']/parent::h2/following-sibling::div/child::button"));
+
+        // Descendant
+        driver.findElement(By.xpath("//a[text()='Samsung Galaxy']/ancestor::li/descendant::button"));
+
+    }
+
     // 3 - Clean: Delete test data/ browser
     @AfterClass
     public void cleanBrowser() {
