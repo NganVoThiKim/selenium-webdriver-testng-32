@@ -128,7 +128,7 @@ public class Topic_03_Xpath_Css {
     }
 
     @Test
-    public void TC_11_Xpath_Outside_Parent_Axes() {
+    public void TC_12_Xpath_Outside_Parent_Axes() {
         driver.get("https://live.techpanda.org/index.php/mobile.html");
 
         // Ancestor
@@ -148,6 +148,79 @@ public class Topic_03_Xpath_Css {
 
         // Descendant
         driver.findElement(By.xpath("//a[text()='Samsung Galaxy']/ancestor::li/descendant::button"));
+
+    }
+
+    @Test
+    public void TC_13_Different_Xpath_Css() {
+        driver.get("https://live.techpanda.org/index.php/customer/account/login/");
+
+        // Direct child (Go 1 node)
+        driver.findElement(By.xpath("//div/input[@id='email']"));
+        driver.findElement(By.cssSelector("div>input[id='email']"));
+
+        // Sub-child (Go to a lot of child - node)
+        driver.findElement(By.xpath("//ul[@class='form-list']//input[@id='email']"));
+        driver.findElement(By.cssSelector("ul[class='form-list'] input[id='email']"));
+
+        // ID
+        driver.findElement(By.xpath("//input[@id='email']"));
+        driver.findElement(By.cssSelector("input[id='email']"));
+        driver.findElement(By.cssSelector("input#email"));
+        driver.findElement(By.cssSelector("#email"));
+
+        // Class
+        driver.findElement(By.xpath("//ul[@class='form-list']"));
+        driver.findElement(By.cssSelector("ul[class='form-list']"));
+        driver.findElement(By.cssSelector("ul.form-list"));
+        driver.findElement(By.cssSelector(".form-list"));
+
+        // NOTE: If class value is separated by spacing -> Allow to use a part or all
+        driver.findElement(By.xpath("//div[@class='col-2 registered-users']"));
+        driver.findElement(By.xpath("//div[contains(@class,'registered-users')]"));
+
+        driver.findElement(By.cssSelector("div.registered-users"));
+        driver.findElement(By.cssSelector("div.registered-users.col-2"));
+        driver.findElement(By.cssSelector("div.col-2.registered-users"));
+        driver.findElement(By.cssSelector("div[class='col-2 registered-users']"));
+
+        // Combine "AND" attribute
+        driver.findElement(By.xpath("//div[@class='col-2 registered-users']"));
+        driver.findElement(By.cssSelector("input[id='email'][name='login[username]']"));
+
+        // Combine "OR" attribute
+        driver.findElement(By.xpath("//input[@id='email' or @id='pass']"));
+        driver.findElement(By.cssSelector("input[id='email'],[id='pass']"));
+
+        // Not attribute
+        driver.findElement(By.xpath("//input[not(@id='email')]"));
+        driver.findElement(By.cssSelector("input:not([id='email'])"));
+        driver.findElement(By.cssSelector("input:not(#email)"));
+
+        // Contains
+        driver.findElement(By.xpath("//input[contains(@placeholder,'entire stor')]"));
+        driver.findElement(By.cssSelector("input[placeholder*='entire stor']"));
+
+        // Starts-with
+        driver.findElement(By.xpath("//input[starts-with(@placeholder,'Search entire')]"));
+        driver.findElement(By.cssSelector("input[placeholder^='Search entire']"));
+
+        // End-with (Xpath isn't support "End-with")
+        driver.findElement(By.cssSelector("input[placeholder$='store here...']"));
+
+        // Following-sibling (All the sibling nodes)
+        driver.findElement(By.xpath("//div[contains(@class,'block-subscribe')]/following-sibling::*"));
+        driver.findElement(By.cssSelector("div.block-subscribe~*"));
+
+        // Following-sibling (All the sibling nodes which same name)
+        driver.findElement(By.xpath("//div[contains(@class,'block-subscribe')]/following-sibling::div"));
+        driver.findElement(By.cssSelector("div.block-subscribe~div"));
+
+        // Following-sibling (Get the next sibling node)
+        driver.findElement(By.xpath("//div[contains(@class,'block-subscribe')]/following-sibling::div/descendant::a[text()='About Us']"));
+        driver.findElement(By.cssSelector("div.block-subscribe+div a[href='http://live.techpanda.org/index.php/contacts/']"));
+
+        // Preceding-sibling (CSS isn't supported)
 
     }
 
