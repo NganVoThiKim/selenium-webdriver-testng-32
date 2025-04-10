@@ -2,14 +2,13 @@ package webdriver.exercise;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Topic09_Xpath_CSS {
+public class Part2_Topic09_Xpath_CSS {
     WebDriver driver;
     // 1 - Setup: OS/ Browser/ Web/ Page/ Data/ Variable/ Object
     @BeforeClass
