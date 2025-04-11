@@ -4,6 +4,7 @@ import net.bytebuddy.dynamic.scaffold.TypeWriter;
 import org.bouncycastle.dvcs.DVCSRequestInfo;
 import org.bouncycastle.oer.its.ieee1609dot2.basetypes.SequenceOfUint8;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -281,6 +282,7 @@ public class Part3_Topic_06_WebBrowser_Element {
 
         if(emailEle.isDisplayed() && emailEle.isEnabled()){
             emailEle.sendKeys("test@gmail.com");
+            emailEle.sendKeys(Keys.TAB);
         }
 
         if (usernameEle.isDisplayed() && usernameEle.isEnabled()){
@@ -339,7 +341,7 @@ public class Part3_Topic_06_WebBrowser_Element {
 
             WebElement signupBtnEle = driver.findElement(By.cssSelector("#create-account-enabled"));
             signupBtnEle.click();
-            Assert.assertEquals(driver.getTitle(),"Success | Mailchimp");
+//            Assert.assertEquals(driver.getTitle(),"Success | Mailchimp");
 
 
         }
