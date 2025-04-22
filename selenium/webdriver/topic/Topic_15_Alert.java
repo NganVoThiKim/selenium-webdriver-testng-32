@@ -1,5 +1,6 @@
 package webdriver.topic;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
@@ -8,7 +9,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class Topic_00_Template{
+public class Topic_15_Alert {
     WebDriver driver;
     // 1 - Setup: OS/ Browser/ Web/ Page/ Data/ Variable/ Object
     @BeforeClass
@@ -20,6 +21,9 @@ public class Topic_00_Template{
     // 2 - Action/ Execute: interact with element/ input data/ verify
     @Test
     public void TC_01_Register(){
+        driver.get("https://automationfc.github.io/basic-form/index.html");
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
 
     }
     @Test

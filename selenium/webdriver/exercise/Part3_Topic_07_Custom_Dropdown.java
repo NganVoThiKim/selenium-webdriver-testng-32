@@ -113,7 +113,9 @@ public class Part3_Topic_07_Custom_Dropdown {
     //
 
     private void searchItemInCustomDropdown(String dropdownSel, String optionListSel, String optionTextSel) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(dropdownSel))).sendKeys(optionTextSel);
+        WebElement inputDropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(dropdownSel)));
+        inputDropdown.clear();
+        inputDropdown.sendKeys(optionTextSel);
         List<WebElement> allOptions = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(optionListSel)));
         for(WebElement option : allOptions){
             if(option.getText().equals(optionTextSel)){
