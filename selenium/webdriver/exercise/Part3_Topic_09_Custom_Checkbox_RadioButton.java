@@ -15,6 +15,7 @@ import java.time.Duration;
 import java.util.List;
 
 public class Part3_Topic_09_Custom_Checkbox_RadioButton {
+    // EXERCISE: https://docs.google.com/document/d/1kPgRirztWIC9R_XiZFNYI3E0KVWfrzf2x_Het5MRj3s/edit?tab=t.0
     WebDriver driver;
     private WebElement summerRadioEle;
     WebDriverWait wait;

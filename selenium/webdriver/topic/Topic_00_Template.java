@@ -19,11 +19,11 @@ public class Topic_00_Template{
 
     // 2 - Action/ Execute: interact with element/ input data/ verify
     @Test
-    public void TC_01_Register(){
+    public void TC_01_(){
 
     }
     @Test
-    public void TC_02_Login(){
+    public void TC_02_(){
     }
 
     // 3 - Clean: Delete test data/ browser
