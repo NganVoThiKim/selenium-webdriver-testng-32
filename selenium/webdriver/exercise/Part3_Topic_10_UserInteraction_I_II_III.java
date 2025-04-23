@@ -1,11 +1,9 @@
 package webdriver.exercise;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -20,6 +18,7 @@ public class Part3_Topic_10_UserInteraction_I_II_III {
     WebDriver driver;
     Actions action;
     WebDriverWait wait;
+    Alert alert;
     // 1 - Setup: OS/ Browser/ Web/ Page/ Data/ Variable/ Object
     @BeforeClass
     public void initialBrowser(){
@@ -105,6 +104,40 @@ public class Part3_Topic_10_UserInteraction_I_II_III {
         driver.get("https://automationfc.github.io/basic-form/index.html");
         action.doubleClick(driver.findElement(By.xpath("//button[text()='Double click me']"))).perform();
         Assert.assertEquals(driver.findElement(By.cssSelector("p#demo")).getText(),"Hello Automation Guys!");
+    }
+
+    @Test
+    public void TC_07_RightClick() throws InterruptedException {
+        driver.get("http://swisnl.github.io/jQuery-contextMenu/demo.html");
+        // Right click
+        action.contextClick(driver.findElement(By.xpath("//span[text()='right click me']"))).perform();
+        WebElement quitOptionEle = driver.findElement(By.cssSelector("li.context-menu-icon-quit"));
+        Assert.assertTrue(quitOptionEle.isDisplayed());
+        // Hover
+        action.moveToElement(quitOptionEle).perform();
+        Assert.assertTrue(driver.findElement(By.cssSelector("li.context-menu-icon-quit.context-menu-visible.context-menu-hover")).isDisplayed());
+        // Click
+        action.click(quitOptionEle).perform();
+        alert = driver.switchTo().alert();
+        Assert.assertEquals(alert.getText(),"clicked: quit");
+        alert.accept();
+        Thread.sleep(2000);
+        // Verify "Quit" menu is closed
+        Assert.assertFalse(quitOptionEle.isDisplayed());
+
+    }
+
+    @Test
+    public void TC_08_DragAndDrop_HTML4(){
+        driver.get("https://automationfc.github.io/kendo-drag-drop/");
+        WebElement dragEle = driver.findElement(By.cssSelector("div#draggable"));
+        WebElement dropEle = driver.findElement(By.cssSelector("div#droptarget"));
+        action.dragAndDrop(dragEle,dropEle).perform();
+        Assert.assertEquals(dropEle.getText(),"You did great!");
+        String colorBackgroundValue = dropEle.getCssValue("background-color");
+        Color color = Color.fromString(colorBackgroundValue);
+        String colorAsHex = color.asHex();
+        Assert.assertEquals(colorAsHex,"#03a9f4");
     }
 
 
