@@ -10,75 +10,79 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class Topic_28_Implicit_Wait {
+public class Topic_29_Static_Wait {
     WebDriver driver;
+
     // 1 - Setup: OS/ Browser/ Web/ Page/ Data/ Variable/ Object
     @BeforeClass
-    public void initialBrowser(){
+    public void initialBrowser() {
         driver = new ChromeDriver();
-        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
     }
 
     // 2 - Action/ Execute: interact with element/ input data/ verify
     @Test
-    public void TC_01_Implicit_No_Set(){
+    public void TC_01_Static_Wait_No_Set() {
         driver.get("https://automationfc.github.io/dynamic-loading/");
 
         driver.findElement(By.cssSelector("div#start>button")).click();
 
         // Show err = "NoSuchElementException"
-        Assert.assertEquals(driver.findElement(By.cssSelector("div#finish>h4")).getText(),"Hello World!");
+        Assert.assertEquals(driver.findElement(By.cssSelector("div#finish>h4")).getText(), "Hello World!");
 
     }
+
     @Test
-    public void TC_02_Implicit_Less_Than(){
+    public void TC_02_Static_Wait_Less_Than() throws InterruptedException {
         driver.get("https://automationfc.github.io/dynamic-loading/");
 
         driver.findElement(By.cssSelector("div#start>button")).click();
 
         // Wait 4s
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
+        Thread.sleep(4 * 1000);
 
         // Show err = "NoSuchElementException"
-        Assert.assertEquals(driver.findElement(By.cssSelector("div#finish>h4")).getText(),"Hello World!");
+        Assert.assertFalse(driver.findElement(By.cssSelector("div#finish>h4")).isDisplayed());
+//        Assert.assertEquals(driver.findElement(By.cssSelector("div#finish>h4")).getText(), "Hello World!");
     }
 
     @Test
-    public void TC_03_Implicit_Equal(){
+    public void TC_03_Static_Wait_Equal() throws InterruptedException {
         driver.get("https://automationfc.github.io/dynamic-loading/");
 
         driver.findElement(By.cssSelector("div#start>button")).click();
 
         // Wait 5s
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        Thread.sleep(5 * 1000);
 
-        Assert.assertEquals(driver.findElement(By.cssSelector("div#finish>h4")).getText(),"Hello World!");
+        Assert.assertTrue(driver.findElement(By.cssSelector("div#finish>h4")).isDisplayed());
+        Assert.assertEquals(driver.findElement(By.cssSelector("div#finish>h4")).getText(), "Hello World!");
     }
 
     @Test
-    public void TC_04_Implicit_Greater_Than(){
+    public void TC_04_Static_Wait_Greater_Than() throws InterruptedException {
         driver.get("https://automationfc.github.io/dynamic-loading/");
 
         driver.findElement(By.cssSelector("div#start>button")).click();
 
         // Wait 6s
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
+        Thread.sleep(6 * 1000);
 
-        Assert.assertEquals(driver.findElement(By.cssSelector("div#finish>h4")).getText(),"Hello World!");
+        Assert.assertTrue(driver.findElement(By.cssSelector("div#finish>h4")).isDisplayed());
+        Assert.assertEquals(driver.findElement(By.cssSelector("div#finish>h4")).getText(), "Hello World!");
     }
 
     @Test
-    public void TC_05_Implicit_Combine(){
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+    public void TC_05_Static_Wait_Combine() throws InterruptedException {
 
         driver.get("https://automationfc.github.io/dynamic-loading/");
 
         driver.findElement(By.cssSelector("div#start>button")).click();
 
+        Thread.sleep(5 * 1000);
+
         Assert.assertEquals(driver.findElement(By.cssSelector("div#finish>h4")).getText(),"Hello World!");
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
+        Thread.sleep(4 * 1000);
 
         // Show err = "ElementNotInteractableException" -> Element shows in DOM but can't show on UI to click
 
@@ -86,7 +90,7 @@ public class Topic_28_Implicit_Wait {
 
         Assert.assertEquals(driver.findElement(By.cssSelector("div#finish>h4")).getText(),"Hello World!");
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        Thread.sleep(6 * 1000);
 
     }
 
