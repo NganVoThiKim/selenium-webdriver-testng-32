@@ -29,7 +29,7 @@ public class Topic_26_Upload_File {
     @BeforeClass
     public void initialBrowser() {
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
     }
 
     // 2 - Action/ Execute: interact with element/ input data/ verify

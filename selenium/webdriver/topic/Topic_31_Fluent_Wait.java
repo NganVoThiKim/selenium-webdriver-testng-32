@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class Topic_30_Fluent_Wait {
+public class Topic_31_Fluent_Wait {
     WebDriver driver;
     FluentWait<WebDriver> driverFluentWait;
 
