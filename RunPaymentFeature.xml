@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Suite1 - Run Payment" verbose="1">
+    <test name="Live Guru - Payment">
+        <classes>
+            <class name="payment.Payment_01_CRUD"/>
+        </classes>
+    </test>
+</suite>
