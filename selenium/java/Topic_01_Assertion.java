@@ -17,5 +17,7 @@ public class Topic_01_Assertion {
         // Check data = expect (ACTUAL = EXPECTED)
         Assert.assertEquals(3,5-2);
         Assert.assertEquals("NAME","NAME");
+
+
     }
 }
