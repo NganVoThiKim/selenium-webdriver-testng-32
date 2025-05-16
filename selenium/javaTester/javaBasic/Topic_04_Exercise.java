@@ -1,4 +1,4 @@
-package javaBasic;
+package javaTester.javaBasic;
 
 public class Topic_04_Exercise {
 

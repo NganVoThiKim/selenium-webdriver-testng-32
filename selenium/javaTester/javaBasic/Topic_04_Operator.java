@@ -1,4 +1,4 @@
-package javaBasic;
+package javaTester.javaBasic;
 
 
 import org.testng.annotations.Test;

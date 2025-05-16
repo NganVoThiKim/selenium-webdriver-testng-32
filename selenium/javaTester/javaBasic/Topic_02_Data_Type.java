@@ -1,4 +1,4 @@
-package javaBasic;
+package javaTester.javaBasic;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

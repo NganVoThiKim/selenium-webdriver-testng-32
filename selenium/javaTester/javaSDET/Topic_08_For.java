@@ -1,4 +1,4 @@
-package java;
+package javaTester.javaSDET;
 
 import java.util.ArrayList;
 import java.util.List;

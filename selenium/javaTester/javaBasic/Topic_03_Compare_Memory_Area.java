@@ -1,12 +1,4 @@
-package javaBasic;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+package javaTester.javaBasic;
 
 public class Topic_03_Compare_Memory_Area {
 

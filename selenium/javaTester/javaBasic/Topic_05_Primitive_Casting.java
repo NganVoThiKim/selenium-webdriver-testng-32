@@ -1,5 +1,5 @@
 
-package javaBasic;
+package javaTester.javaBasic;
 
 public class Topic_05_Primitive_Casting {
 

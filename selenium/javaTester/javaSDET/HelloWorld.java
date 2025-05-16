@@ -1,4 +1,4 @@
-package javaSDET;
+package javaTester.javaSDET;
 
 public class HelloWorld {
     public static void main(String[] args) {
