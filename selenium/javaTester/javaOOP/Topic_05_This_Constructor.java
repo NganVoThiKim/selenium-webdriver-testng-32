@@ -1,12 +1,12 @@
 package javaTester.javaOOP;
 
-public class Topic_05_This {
+public class Topic_05_This_Constructor {
 
     private int firstNumber;
     private int secondNumber;
 
     // This constructor access to the other constructor -> Must use "this"
-    public Topic_05_This(){
+    public Topic_05_This_Constructor(){
         // Using "this" to access from this constructor to the other constructor
         this(10,15);
         System.out.println("<this> must put at the first statement in constructor body");
@@ -16,7 +16,7 @@ public class Topic_05_This {
 
     // Global and Local Variable same name
     // This: Access to global variable
-    public Topic_05_This(int firstNumber, int secondNumber){
+    public Topic_05_This_Constructor(int firstNumber, int secondNumber){
         this.firstNumber = firstNumber;
         this.secondNumber = secondNumber;
     }
@@ -37,7 +37,7 @@ public class Topic_05_This {
 //        topic.showNumber();
 
         // Check Method
-        Topic_05_This topic = new Topic_05_This();
+        Topic_05_This_Constructor topic = new Topic_05_This_Constructor();
         topic.showNumber();
     }
 }

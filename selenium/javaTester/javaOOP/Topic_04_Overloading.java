@@ -9,7 +9,7 @@ public class Topic_04_Overloading {
     static double plusMethod(double a, double b){
         return a + b;
     }
-    static double plusMethod(int a, int b, int c){
+    static int plusMethod(int a, int b, int c){
         return a + b + c;
     }
 
